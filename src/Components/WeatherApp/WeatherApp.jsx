@@ -12,6 +12,7 @@ import humidity_icon from '../Assets/humidity icon.png'
 
 const WeatherApp = () => {
 
+    {/*I created my first API key using OpenWeatherApp*/}
     let api_key ="141de44d3b96e82b9c147d27fa50d731";
   
     const [wicon,setWicon] = useState(cloudy_icon);
@@ -23,6 +24,7 @@ if(element[0].value==="")
 {
 return 0;
 }
+{/*I installed ThunderClient and changed the default units to metric for easy viewing, otherwise it could be confusing and complicated for the user to interpret.*/}
 let url =`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
 
 let response = await fetch(url);
@@ -35,6 +37,7 @@ const location =document.getElementsByClassName("weather-location");
 humidity[0].innerHTML = data.main.humidity+" %";
 wind[0].innerHTML = Math.floor(data.wind.speed)+" km/h";
 temperature[0].innerHTML = Math.floor(data.main.temp)+"&#8451;";
+{/*Math.floor removed the decimal data and kept the degrees clean*/}
 location[0].innerHTML = data.name;
 
 if(data.weather[0].icon==="01d" || data.weather[0].icon==="01n")
